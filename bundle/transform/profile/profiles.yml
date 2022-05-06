@@ -2,32 +2,59 @@ config:
   send_anonymous_usage_stats: False
   use_colors: True
 meltano:
-  target: "{{ env_var('DBT_TARGET') }}"
+  target: "{{ env_var('MELTANO_ENVIRONMENT', 'dev') }}"
   outputs:
-    snowflake:
-      type: snowflake
+    dev:
+      type: redshift
+      method: iam
+      cluster_id: "{{ env_var('DBT_REDSHIFT_CLUSTER_ID') }}"
+      host: "{{ env_var('DBT_REDSHIFT_HOST') }}"
+      user: "{{ env_var('DBT_REDSHIFT_USER') }}"
+      # iam_profile: "{{ env_var('DBT_REDSHIFT_IAM_PROFILE') }}"
+      # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
+      # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
+      # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
+      schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
-      account: "{{ env_var('SF_ACCOUNT') }}"
-      user: "{{ env_var('SF_USER') }}"
-      password: "{{ env_var('SF_PASSWORD') }}"
-      role: "{{ env_var('SF_ROLE') }}"
-      database: "{{ env_var('SF_DATABASE') }}"
-      warehouse: "{{ env_var('SF_WAREHOUSE') }}"
-      schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
-    postgres:
-      type: postgres
+      keepalives_idle: 240
+      # search_path: public # optional, but not recommended
+      # sslmode: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, set the sslmode used to connect to the database
+      # ra3_node: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, enables cross-database sources
+    staging:
+      type: redshift
+      method: iam
+      cluster_id: "{{ env_var('DBT_REDSHIFT_CLUSTER_ID') }}"
+      host: "{{ env_var('DBT_REDSHIFT_HOST') }}"
+      user: "{{ env_var('DBT_REDSHIFT_USER') }}"
+      # iam_profile: "{{ env_var('DBT_REDSHIFT_IAM_PROFILE') }}"
+      # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
+      # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
+      # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
+      schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
-      host: "{{ env_var('PG_ADDRESS') }}"
-      port: "{{ env_var('PG_PORT') | int }}"
-      user: "{{ env_var('PG_USERNAME') }}"
-      pass: "{{ env_var('PG_PASSWORD') }}"
-      dbname: "{{ env_var('PG_DATABASE') }}"
-      schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
-    bigquery:
-      type: bigquery
+      keepalives_idle: 240
+      # search_path: public # optional, but not recommended
+      # sslmode: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, set the sslmode used to connect to the database
+      # ra3_node: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, enables cross-database sources
+    prod:
+      type: redshift
+      method: iam
+      cluster_id: "{{ env_var('DBT_REDSHIFT_CLUSTER_ID') }}"
+      host: "{{ env_var('DBT_REDSHIFT_HOST') }}"
+      user: "{{ env_var('DBT_REDSHIFT_USER') }}"
+      # iam_profile: "{{ env_var('DBT_REDSHIFT_IAM_PROFILE') }}"
+      # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
+      # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
+      # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
+      schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
-      method: service-account
-      project: "{{ env_var('TARGET_BIGQUERY_PROJECT_ID') }}"
-      dataset: "{{ env_var('DBT_TARGET_SCHEMA') }}"
-      keyfile: "{{ env_var('TARGET_BIGQUERY_CREDENTIALS_PATH') }}"
-      location: "{{ env_var('TARGET_BIGQUERY_LOCATION') }}"
+      keepalives_idle: 240
+      # search_path: public # optional, but not recommended
+      # sslmode: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, set the sslmode used to connect to the database
+      # ra3_node: "{{ env_var('DBT_REDSHIFT_USER') }}" # optional, enables cross-database sources
