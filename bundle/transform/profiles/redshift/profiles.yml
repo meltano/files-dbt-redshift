@@ -13,7 +13,8 @@ meltano:
       # iam_profile: "{{ env_var('DBT_REDSHIFT_IAM_PROFILE') }}"
       # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
-      # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      # db_groups: "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
       port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
@@ -32,6 +33,7 @@ meltano:
       # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
       # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
       port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
@@ -50,6 +52,7 @@ meltano:
       # iam_duration_seconds: "{{ env_var('DBT_REDSHIFT_IAM_DURATION_SECONDS') }}" # optional
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
       # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
+      # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
       port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"

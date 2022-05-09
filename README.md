@@ -4,7 +4,7 @@ Meltano project [file bundle](https://meltano.com/docs/command-line-interface.ht
 
 Files:
 - [`transform/models`](./bundle/transform/models) (directory)
-- [`transform/profile/profiles.yml`](./bundle/transform/profiles/redshift/profiles.yml)
+- [`transform/profiles/redshift/profiles.yml`](./bundle/transform/profiles/redshift/profiles.yml)
 - [`transform/dbt_project.yml`](./bundle/transform/dbt_project.yml)
 - [`transform/.gitignore`](./bundle/transform/.gitignore)
 
