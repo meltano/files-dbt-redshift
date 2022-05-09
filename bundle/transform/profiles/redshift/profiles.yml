@@ -15,7 +15,7 @@ meltano:
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
       # db_groups: "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
       # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
-      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      port: "{{ env_var('DBT_REDSHIFT_PORT', 5439) | int }}"
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
@@ -34,7 +34,7 @@ meltano:
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
       # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
       # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
-      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      port: "{{ env_var('DBT_REDSHIFT_PORT', 5439) | int }}"
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
@@ -53,7 +53,7 @@ meltano:
       # autocreate: "{{ env_var('DBT_REDSHIFT_AUTOCREATE') }}" # optional
       # db_groups "{{ env_var('DBT_REDSHIFT_DB_GROUPS') }}" # optional
       # password: "{{ env_var ('DBT_REDSHIFT_PASSWORD') }}"
-      port: {{ env_var('DBT_REDSHIFT_PORT', 5439) }}
+      port: "{{ env_var('DBT_REDSHIFT_PORT', 5439) | int }}"
       dbname: "{{ env_var('DBT_REDSHIFT_DBNAME') }}"
       schema: "{{ env_var('DBT_REDSHIFT_SCHEMA') }}"
       threads: 2
